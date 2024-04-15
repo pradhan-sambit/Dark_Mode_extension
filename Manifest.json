@@ -1,0 +1,32 @@
+{
+    "name": "Dark Mode v2",
+    "description": "Dark Mode Extension",
+    "version": "2024.4.10.1",
+    "manifest_version": 3,
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_title": "Dark Mode",
+        "default_popup": "popup.html"
+    },
+    "permissions": [
+        "tabs",
+        "scripting",
+        "storage"
+    ],
+    "host_permissions": [
+        "*://*/*"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*/*"
+            ],
+            "js": [
+                "script.js"
+            ],
+            "all_frames": false
+        }
+    ]
+}

@@ -13,9 +13,7 @@ darkButton.addEventListener('click', () => {
 });
 
 
-const lightButton= document.getElementById(".toggle-switch");
-
-lightButton.addEventListener('click', () =>{
+darkButton.addEventListener('click', () =>{
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         const activeTab = tabs[0];
         chrome.scripting.executeScript({

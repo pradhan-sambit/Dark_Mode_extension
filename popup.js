@@ -1,4 +1,4 @@
-const darkButton = document.getElementById(".toggle-switch");
+const darkButton = document.querySelector(".toggle-switch");
 
 darkButton.addEventListener('click', () => {
     

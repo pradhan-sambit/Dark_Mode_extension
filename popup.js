@@ -1,7 +1,8 @@
 const darkButton = document.querySelector(".toggle-switch");
-let darkMode=true;
+var darkMode=true;
 
 if(darkMode){
+    console.log(darkMode);
     darkButton.addEventListener('click', () =>{
         chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
             const activeTab = tabs[0];

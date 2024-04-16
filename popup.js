@@ -1,6 +1,20 @@
 const darkButton = document.querySelector(".toggle-switch");
+let darkMode=true;
 
-darkButton.addEventListener('click', () => {
+if(darkMode){
+    darkButton.addEventListener('click', () =>{
+        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+            const activeTab = tabs[0];
+            chrome.scripting.executeScript({
+                target: { tabId: activeTab.id, allFrames: false },
+                files: ['light_script.js']
+            });
+        });
+    })
+}
+else{
+    darkMode=false;
+    darkButton.addEventListener('click', () => {
     
         chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
             const activeTab = tabs[0];
@@ -11,14 +25,7 @@ darkButton.addEventListener('click', () => {
         });
     
 });
+}
 
 
-darkButton.addEventListener('click', () =>{
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        const activeTab = tabs[0];
-        chrome.scripting.executeScript({
-            target: { tabId: activeTab.id, allFrames: false },
-            files: ['light_script.js']
-        });
-    });
-})
+
